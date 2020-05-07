@@ -23,32 +23,30 @@ Once that runs you should be able to run the following 2 commands in separate te
 1. Use the latest stable Rails version
 2. Use Slim view engine
 3. Frontend Framework
-    - React JS (optional)
-    - Bootstrap
+  - React JS (optional)
+  - Bootstrap
 4. Cover all changes with Rspec tests
 5. Add integration tests using Capybara, Nightwatch.js, Cypress, Puppeteer, Protractor or similar
 6. Create factories with FactoryBot
 7. Apply Rubocop and other
 8. For Rails models, try to use:
-    - Single Table Inheritance (STI)
-    - Polymorphic associations
-    - Scopes
-    - Validations and custom validator object, if necessary
-    - Factory pattern
-    - Demonstrate meta-programming by generating/defining similar predicate
-    - methods
-    - Encapsulate some logic in a module
-    - Class methods
-    - private section
+  - Single Table Inheritance (STI)
+  - Polymorphic associations
+  - Scopes
+  - Validations and custom validator object, if necessary
+  - Factory pattern
+  - Demonstrate meta-programming by generating/defining similar predicate methods
+  - Encapsulate some logic in a module's class methods private section
 9. For Rails controllers, try to:
-    - Keep them 'thin'
-    - Encapsulate business logic in service objects (1)
+  - Keep them 'thin'
+  - Encapsulate business logic in:
+    - service objects (1)
     - use cases (2)
     - or similar operations (3)
     - Interactors (4)
 10. Presentation:
-    - Use partials
-    - Define Presenters (View models, Form objects (5))
+  - Use partials
+  - Define Presenters (View models, Form objects (5))
 11. Try to showcase background and cron jobs
 
 ### ☐ Relations
@@ -56,13 +54,10 @@ Once that runs you should be able to run the following 2 commands in separate te
   - Ensure you have merchant and admin user roles (UI)
   - Merchants have many payment transactions of different types
   - Transactions are related (belongs_to)
-
-  You can also have follow/referenced transactions that refer/depend to/on
-    - the initial transaction
+  - You can also have follow/referenced transactions that refer/depend to/on the initial transaction
     - Authorize Transaction -> Charge Transaction -> Refund Transaction
     - Authorize Transaction -> Reversal Transaction
-    - Only approved or refunded transactions can be referenced,
-    - otherwise the submitted transaction will be created with status error
+    - Only approved or refunded transactions can be referenced, otherwise the submitted transaction will be created with status error
     - Ensure you prevent a merchant from being deleted unless there are no related payment transactions
 
 ### ☐ Models
@@ -72,15 +67,12 @@ Once that runs you should be able to run the following 2 commands in separate te
   - Use validations for: uuid, amount > 0, customer_email, status
   - Use STI
   - Transaction Types
-  - Authorize transaction - has amount and used to hold customer's amount
-  - Charge transaction - has amount and used to confirm the amount is taken from the customer's account and transferred to the merchant.
-  - The merchant's total transactions amount has to be the sum of the approved Charge transactions
-  - Refund transaction - has amount and used to reverse a specific amount (whole amount) of the Charge Transaction and return it to the customer.
-  - Transitions the Charge transaction to status refunded.
-  - The approved Refund transactions will decrease the merchant's total transaction amount
-  - Reversal transaction - has no amount, used to invalidate the
-  - Authorize Transaction
-  - Transitions the Authorize transaction to status reversed
+    - Authorize transaction - has amount and used to hold customer's amount
+    - Charge transaction - has amount and used to confirm the amount is taken from the customer's account and transferred to the merchant. The merchant's total transactions amount has to be the sum of the approved Charge transactions
+    - Refund transaction - has amount and used to reverse a specific amount (whole amount) of the Charge Transaction and return it to the customer. Transitions the Charge transaction to status refunded. The approved Refund transactions will decrease the merchant's total transaction amount
+    - Reversal transaction - has no amount, used to invalidate the Authorize Transaction
+
+    - Transitions the Authorize transaction to status reversed
 
 ### ☐ Inputs and tasks
 
