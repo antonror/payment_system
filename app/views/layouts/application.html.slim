@@ -5,7 +5,16 @@ html
     = csrf_meta_tags
     = csp_meta_tag
     meta content="width=device-width, initial-scale=1" name="viewport"
+
+    = stylesheet_link_tag    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'
+    = stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
+    = javascript_include_tag 'https://code.jquery.com/jquery-3.3.1.min.js'
+    = javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'
+    / = stylesheet_link_tag    'https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap'
+
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = yield
+    = render 'layouts/partials/header'
+    .align-items-center.d-flex.chat-holder.justify-content-center
+      = yield
