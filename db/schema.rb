@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_08_004952) do
+ActiveRecord::Schema.define(version: 2020_05_08_221630) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "transactions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.decimal "amount", default: "0.0", null: false
+    t.integer "status", default: 0, null: false
+    t.string "customer_email", default: "", null: false
+    t.integer "customer_phone", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_transactions_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -21,10 +33,10 @@ ActiveRecord::Schema.define(version: 2020_05_08_004952) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "name"
+    t.string "name", default: "", null: false
     t.string "description"
-    t.string "role"
-    t.integer "status"
+    t.integer "role", default: 0, null: false
+    t.integer "status", default: 0, null: false
     t.integer "total_transaction_sum"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -32,4 +44,5 @@ ActiveRecord::Schema.define(version: 2020_05_08_004952) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "transactions", "users"
 end

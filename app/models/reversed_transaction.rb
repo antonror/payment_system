@@ -1,0 +1,2 @@
+class ReversedTransaction < Transaction
+end
