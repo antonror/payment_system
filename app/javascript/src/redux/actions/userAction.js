@@ -1,9 +1,9 @@
 import store               from "../store";
 import axios               from "axios";
 
-export const fetchHotel = (data) => {
+export const fetchData = (data) => {
   return {
-    type: "FETCH_USER"
+    type: "FETCH_DATA"
   };
 };
 
@@ -14,15 +14,53 @@ export const receiveUser = (data) => {
   };
 };
 
+export const receiveMerchants = (data) => {
+  return {
+    type: "FETCHED_MERCHANTS",
+    payload: data
+  };
+};
+
 export const updateCurrentState = (state) => {
   return {
     type: "UPDATE_CURRENT_STATE",
     payload: state
-  }
+  };
+};
+
+export const getMerchants = () => {
+  store.dispatch(fetchData());
+  return function(dispatch) {
+    return axios
+      .get('/api/v1/users')
+      .then((resp) => {
+        dispatch(receiveMerchants(resp.data));
+      });
+  };
+};
+
+export const updateMerchantStatus = (id, status) => {
+  return function(dispatch) {
+    return axios
+      .patch(`/api/v1/users/${id}`, { user: {status: status} })
+      .then((resp) => {
+        dispatch(getMerchants());
+      });
+  };
+};
+
+export const destroyMarchent = (id) => {
+  return function(dispatch) {
+    return axios
+      .delete(`/api/v1/users/${id}`)
+      .then((resp) => {
+        dispatch(getMerchants());
+      });
+  };
 };
 
 export const getCurrentUser = () => {
-  store.dispatch(fetchHotel());
+  store.dispatch(fetchData());
   return function(dispatch) {
     return axios
       .get('/api/v1/users/check_for_user')

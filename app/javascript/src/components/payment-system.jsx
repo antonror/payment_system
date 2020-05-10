@@ -26,8 +26,14 @@ class PaymentSystem extends Component {
             { currentUser &&
               <React.Fragment>
                 <div> <b>Name: </b> {currentUser.name}</div>
-                <div> <b>Role: </b> {currentUser.role}</div>
-                <div> <b>Amount: $</b> {currentUser.amount ? currentUser.amount : 0}</div>
+                <div className="text-capitalize"> <b>Role: </b> {currentUser.role}</div>
+                <div className="text-capitalize">
+                  <b> Status: </b> {currentUser.status}
+                  { currentUser.status === "inactive" &&
+                    <i className="text-danger"> Please ask admin to activate you!</i>
+                  }
+                </div>
+                <div> <b>Amount: $</b> {currentUser.total_transaction_sum ? currentUser.total_transaction_sum : 0}</div>
                 <div> <b>Description: </b> {currentUser.description}</div>
               </React.Fragment>
             }
