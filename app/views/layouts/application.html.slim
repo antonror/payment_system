@@ -16,5 +16,6 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
     = render 'layouts/partials/header'
-    .align-items-center.d-flex.chat-holder.justify-content-center
+    = render 'layouts/partials/alert'
+    .align-items-center.d-flex.app-holder.justify-content-center
       = yield

@@ -29,6 +29,8 @@ gem 'devise'
 gem 'figaro', '~> 1.1.1'
 # slim files
 gem 'slim-rails', '~> 3.2.0'
+# jbuilder for json data
+gem 'jbuilder', '~> 2.7'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

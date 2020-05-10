@@ -8,4 +8,13 @@ Rails.application.routes.draw do
   get '/app', to: 'welcome#app', as: 'app'
 
   root 'welcome#app'
+
+  # Api Routes
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v1 do
+      resources :users, only: [:index] do
+        get 'check_for_user', on: :collection
+      end
+    end
+  end
 end
