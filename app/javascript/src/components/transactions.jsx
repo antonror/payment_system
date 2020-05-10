@@ -2,47 +2,41 @@ import React, {Component}          from "react";
 import { connect }                 from "react-redux";
 import { bindActionCreators }      from "redux";
 import {
-  getCurrentUser
+  getTransactions
 }                                  from "../redux/actions";
 
 class Transactions extends Component {
 
   componentDidMount() {
-
+    this.props.getTransactions();
   };
 
   render(){
-
+    const {relatedTransactions, getTransactions} = this.props;
     return (
-      <div className="tsransactions-list">
+      <div className="transactions-list">
         <table className="table table-striped">
           <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
+              <th scope="col">Type</th>
+              <th scope="col">Customer Email</th>
+              <th scope="col">Status</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Created At</th>
+              <th scope="col">Detail Info</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>twitter</td>
-            </tr>
+            { relatedTransactions && relatedTransactions.map(transaction => (
+              <tr key={transaction.id}>
+                <td>{transaction.type ? transaction.type : 'Transaction'}</td>
+                <td>{transaction.customer_email}</td>
+                <td className="text-capitalize">{transaction.status}</td>
+                <td>${transaction.amount ? transaction.amount : 0}</td>
+                <td>{transaction.created_at}</td>
+                <td>info</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -52,13 +46,13 @@ class Transactions extends Component {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-
+    getTransactions          :  getTransactions
   }, dispatch);
 };
 
 const mapStateToProps = state => {
   return {
-
+    relatedTransactions      : state.transactions.relatedTransactions
   };
 };
 

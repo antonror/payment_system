@@ -17,4 +17,8 @@ module ApplicationHelper
       "alert-#{flash_type.to_s}"
     end
   end
+
+  def display_date date
+    date.strftime("%B %e, %Y %H:%M:%S %P")
+  end
 end

@@ -1,12 +1,12 @@
 class Transaction < ApplicationRecord
+  # Added to soft delete the user
+  acts_as_paranoid
 
-  validates :uuid, presence: true, uniqueness: true
-  validates :customer_email, presence: true, uniqueness: true
-  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
-  validates :customer_phone, presence: true, uniqueness: true
-  validates :amount, numericality: { greater_than: 0 } , unless: :exclude_reversed_transactions
+  validates :customer_email, presence: true
+  validates :customer_email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+  validates :customer_phone, presence: true
 
-  enum status: { initial: 0, approved: 1, refunded: 2, reversed: 3, error: 4 }
+  enum status: { authorized: 0, approved: 1, refunded: 2, reversed: 3, error: 4 }
 
   belongs_to :user
 end

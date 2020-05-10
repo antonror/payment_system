@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       resources :users, only: [:index, :update, :destroy] do
         get 'check_for_user', on: :collection
       end
+      resources :transactions
     end
   end
 end

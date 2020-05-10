@@ -1,8 +1,10 @@
 import user                 from './userReducer';
+import transactions         from './transactionsReducer';
 import {combineReducers}    from "redux";
 
 const reducer = combineReducers({
-  user
+  user,
+  transactions
 });
 
 export default reducer;
