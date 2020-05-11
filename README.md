@@ -41,7 +41,7 @@ Once that runs you should be able to run the following 3 commands in separate te
   - Single Table Inheritance (STI) **done**
   - Polymorphic associations  **done**
   - Scopes **done**
-  - Validations and custom validator object, if necessary **pending**
+  - Validations and custom validator object, if necessary **done**
   - Factory pattern **pending**
   - Demonstrate meta-programming by generating/defining similar predicate methods **pending**
   - Encapsulate some logic in a module's class methods private section **pending**
@@ -75,10 +75,10 @@ Once that runs you should be able to run the following 3 commands in separate te
   - Use validations for: uuid, amount > 0, customer_email, status
   - Use STI
   - Transaction Types
-    - Authorize transaction - has amount and used to hold customer's amount
-    - Charge transaction - has amount and used to confirm the amount is taken from the customer's account and transferred to the merchant. The merchant's total transactions amount has to be the sum of the approved Charge transactions
-    - Refund transaction - has amount and used to reverse a specific amount (whole amount) of the Charge Transaction and return it to the customer. Transitions the Charge transaction to status refunded. The approved Refund transactions will decrease the merchant's total transaction amount
-    - Reversal transaction - has no amount, used to invalidate the Authorize Transaction
+    - Authorize transaction - has amount and used to hold customer's amount **done**
+    - Charge transaction - has amount and used to confirm the amount is taken from the customer's account and transferred to the merchant. The merchant's total transactions amount has to be the sum of the approved Charge transactions **done**
+    - Refund transaction - has amount and used to reverse a specific amount (whole amount) of the Charge Transaction and return it to the customer. Transitions the Charge transaction to status refunded. The approved Refund transactions will decrease the merchant's total transaction amount **done**
+    - Reversal transaction - has no amount, used to invalidate the Authorize Transaction **done**
     - Transitions the Authorize transaction to status reversed **done**
 
 ### ☐ Inputs and tasks

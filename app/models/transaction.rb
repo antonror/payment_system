@@ -2,7 +2,7 @@ class Transaction < ApplicationRecord
   # Added to soft delete the user
   acts_as_paranoid
 
-  validates :customer_email, presence: true
+  validates :customer_email, presence: true, email: true
   validates :customer_email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   validates :customer_phone, presence: true
 
