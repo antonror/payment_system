@@ -28,45 +28,45 @@ Once that runs you should be able to run the following 3 commands in separate te
 
 ## Technical requirements
 
-1. Use the latest stable Rails version
-2. Use Slim view engine
+1. Use the latest stable Rails version **done**
+2. Use Slim view engine **done**
 3. Frontend Framework
-  - React JS (optional)
-  - Bootstrap
-4. Cover all changes with Rspec tests
-5. Add integration tests using Capybara, Nightwatch.js, Cypress, Puppeteer, Protractor or similar
-6. Create factories with FactoryBot
-7. Apply Rubocop and other
+ - used React JS **done**
+ - used Bootstrap **done**
+4. Cover all changes with Rspec tests **done**
+5. Add integration tests using Capybara, Nightwatch.js, Cypress, Puppeteer, Protractor or similar **pending**
+6. Create factories with FactoryBot **done**
+7. Apply Rubocop and other linters **done**
 8. For Rails models, try to use:
-  - Single Table Inheritance (STI)
-  - Polymorphic associations
-  - Scopes
-  - Validations and custom validator object, if necessary
-  - Factory pattern
-  - Demonstrate meta-programming by generating/defining similar predicate methods
-  - Encapsulate some logic in a module's class methods private section
+  - Single Table Inheritance (STI) **done**
+  - Polymorphic associations  **done**
+  - Scopes **done**
+  - Validations and custom validator object, if necessary **pending**
+  - Factory pattern **pending**
+  - Demonstrate meta-programming by generating/defining similar predicate methods **pending**
+  - Encapsulate some logic in a module's class methods private section **pending**
 9. For Rails controllers, try to:
-  - Keep them 'thin'
+  - Keep them 'thin' **done**
   - Encapsulate business logic in:
-    - service objects (1)
-    - use cases (2)
-    - or similar operations (3)
-    - Interactors (4)
+    - service objects (1) **pending**
+    - use cases (2) ** chosen service object**
+    - or similar operations (3) ** chosen service object**
+    - Interactors (4) ** chosen service object**
 10. Presentation:
-  - Use partials
-  - Define Presenters (View models, Form objects (5))
-11. Try to showcase background and cron jobs
+  - Use partials **done with React App**
+  - Define Presenters (View models, Form objects (5)) **done with React App**
+11. Try to showcase background and cron jobs **done**
 
 ### ☐ Relations
 
-  - Ensure you have merchant and admin user roles (UI)
-  - Merchants have many payment transactions of different types
-  - Transactions are related (belongs_to)
+  - Ensure you have merchant and admin user roles (UI) **done**
+  - Merchants have many payment transactions of different types **done**
+  - Transactions are related (belongs_to) **done**
   - You can also have follow/referenced transactions that refer/depend to/on the initial transaction
-    - Authorize Transaction -> Charge Transaction -> Refund Transaction
-    - Authorize Transaction -> Reversal Transaction
+    - Authorize Transaction -> Charge Transaction -> Refund Transaction **done**
+    - Authorize Transaction -> Reversal Transaction **done**
     - Only approved or refunded transactions can be referenced, otherwise the submitted transaction will be created with status error
-    - Ensure you prevent a merchant from being deleted unless there are no related payment transactions
+    - Ensure you prevent a merchant from being deleted unless there are no related payment transactions **done**
 
 ### ☐ Models
 
@@ -79,38 +79,17 @@ Once that runs you should be able to run the following 3 commands in separate te
     - Charge transaction - has amount and used to confirm the amount is taken from the customer's account and transferred to the merchant. The merchant's total transactions amount has to be the sum of the approved Charge transactions
     - Refund transaction - has amount and used to reverse a specific amount (whole amount) of the Charge Transaction and return it to the customer. Transitions the Charge transaction to status refunded. The approved Refund transactions will decrease the merchant's total transaction amount
     - Reversal transaction - has no amount, used to invalidate the Authorize Transaction
-
-    - Transitions the Authorize transaction to status reversed
+    - Transitions the Authorize transaction to status reversed **done**
 
 ### ☐ Inputs and tasks
 
-  - Imports new merchants and admins from CSV (rake task)
-  - A background Job for deleting transactions older than an hour (cron job)
-  - Accepts payments using XML/ JSON API (single point POST request)
-  - Include API authentication layer (Basic authentication, Token-based authentication or JWT tokens)
-  - No transactions can be submitted unless the merchant is in active state
+  - Imports new merchants and admins from CSV (rake task) **done**
+  - A background Job for deleting transactions older than an hour (cron job) **done**
+  - Accepts payments using XML/ JSON API (single point POST request) **done**
+  - Include API authentication layer (Basic authentication, Token-based authentication or JWT tokens) **done**
+  - No transactions can be submitted unless the merchant is in active state **done**
 
 ### ☐ Presentation
 
-  - Display, edit, destroy merchants
-  - Display transactions
-
-### ☐ Task submission
-
-  - Add the task to a GitHub/Bitbucket/GitLab repo - either a public or a private one.
-  - Organize the Git commits the following way:
-    - Initial commit with all changes not directly related to the task - the newly installed rails app, .gitignore file, etc.
-
-    -  All subsequent commits should be logically organized reflecting the steps
-    - You've taken developing the application
-    - Neither one large commit with all changes nor a multitude of smaller commits for every little tiny change.
-
-  - Document your code where needed and add a short README.
-
-### ☐ Links
-
-  1. Service objects: https://www.toptal.com/ruby-on-rails/rails-service-objectstutorial
-  2. Use cases: https://webuild.envato.com/blog/a-case-for-use-cases/
-  3. Operations: http://trailblazer.to/gems/operation/2.0/
-  4. Interactors: https://medium.com/reflektive-engineering/from-service-objectsto-interactors-db7d2bb7dfd9
-  5. View models, Form objects: http://engineering.appfolio.com/appfolioengineering/2017/4/21/view-models-form-objects-presenters-and-helpers-ohmy
+  - Display, edit, destroy merchants **done**
+  - Display transactions **done**
