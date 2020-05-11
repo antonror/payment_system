@@ -10,7 +10,7 @@ class AuthorizedTransaction < Transaction
   private
 
   def create_charged_transaction
-    chareged = ChargedTransaction.create(amount: amount, customer_email: customer_email,
+    ChargedTransaction.create(amount: amount, customer_email: customer_email,
                               customer_phone: customer_phone, status: 1,
                               user_id: user_id, authorized_transaction_id: id)
   end

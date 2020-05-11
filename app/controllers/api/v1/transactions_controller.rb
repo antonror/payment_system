@@ -1,17 +1,19 @@
 class Api::V1::TransactionsController < Api::V1::BaseController
   before_action :set_transaction, only: [:update]
+  before_action :check_amount_presence, only: [:create]
 
   def index
     @transactions = current_user.admin? ? Transaction.all : current_user.transactions
   end
 
   def create
-    if authorized?
-      current_user.authorized_transactions.create(transaction_params)
+    result = TransactionService.call(user: current_user, data: transaction_params, amount_present: has_amount?)
+
+    if result.success?
+      render json: { message: 'Transaction created!' }, status: :ok
     else
-      current_user.transactions.create(transaction_params)
+      render json: { message: 'Transaction failed to create' }, status: 422
     end
-    render json: {message: 'Transaction created!'}, status: :ok
   end
 
   def update
@@ -22,11 +24,11 @@ class Api::V1::TransactionsController < Api::V1::BaseController
   private
 
   def transaction_params
-    status = authorized? ? 'authorized' : 'error'
+    status = has_amount? ? 'authorized' : 'error'
     params.require(:transaction).permit(:amount, :customer_email, :customer_phone).merge(status: status)
   end
 
-  def authorized?
+  def has_amount?
     params.dig(:transaction, :amount).to_i > 0
   end
 
@@ -36,5 +38,9 @@ class Api::V1::TransactionsController < Api::V1::BaseController
 
   def set_transaction
     @transaction = Transaction.find(params[:id]) if current_user.admin?
+  end
+
+  def check_amount_presence
+    params.dig(:transaction, :amount).to_i > 0
   end
 end
