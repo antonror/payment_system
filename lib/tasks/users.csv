@@ -1,0 +1,11 @@
+name,description,email,role,status,password,total_transaction_sum
+Ali,Hi its Ali,ali@payment.com,admin,active,ali123,100
+Amjad,Hi its Amjad,amj@payment.com,merchant,active,amj234,200
+Anna,Hi its Anna,anna@payment.com,admin,active,anna345,300
+Madi,Hi its Madi,madi@payment.com,merchant,active,madi456,400
+Sara,Hi its Sara,sara@payment.com,admin,active,sara567,500
+John,Hi its John,john@payment.com,merchant,active,john678,600
+Jane,Hi its Jane,jane@payment.com,admin,active,jane789,700
+Bond,Hi its Bond,bond@payment.com,merchant,inactive,bond890,800
+Lily,Hi its Lily,lily@payment.com,admin,inactive,lily101,1000
+Nora,Hi its Nora,nora@payment.com,merchant,inactive,nora901,900
