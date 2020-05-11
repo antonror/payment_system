@@ -31,6 +31,9 @@ gem 'figaro', '~> 1.1.1'
 gem 'slim-rails', '~> 3.2.0'
 # Added paranoia gem to soft delete the records so we can restore it if needed
 gem 'paranoia', '~> 2.2'
+# Sidekiq Worker
+gem 'sidekiq', '~> 5.2.7'
+gem 'sidekiq-scheduler', '~> 3.0.0'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
