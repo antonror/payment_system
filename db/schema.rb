@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_05_10_235026) do
     t.decimal "amount", default: "0.0", null: false
     t.integer "status", default: 0, null: false
     t.string "customer_email", default: "", null: false
-    t.integer "customer_phone", null: false
+    t.string "customer_phone", default: "", null: false
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

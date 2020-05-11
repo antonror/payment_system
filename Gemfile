@@ -52,6 +52,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 5.2.0'
   gem 'shoulda', '~> 3.6.0'
   gem 'rails-controller-testing', '~> 1.0.4'
+  gem 'faker'
 end
 
 group :development do
