@@ -12,11 +12,19 @@ Dependencies:
 From the root of the project directory - simply run:
 
 `bundle install`
+`yarn install`
 
-Once that runs you should be able to run the following 2 commands in separate terminal tabs / windows:
+Once that runs you should be able to run the following 3 commands in separate terminal tabs:
 
 1.  `rails s` - this will start the rails server locally.
 2.  `bin/webpack-dev-server` - this will start to watch and recompile the JavaScripts found in `app/javascript`
+3. `bundle exec sidekiq` for the workers/jobs
+
+## OR Simply run this command
+
+  1. `foreman s -f Procfile.dev` (All three command run inside Procfile.dev)
+
+`There is a csv file in lib/task for testing purpose!`
 
 ## Technical requirements
 

@@ -34,6 +34,8 @@ gem 'paranoia', '~> 2.2'
 # Sidekiq Worker
 gem 'sidekiq', '~> 5.2.7'
 gem 'sidekiq-scheduler', '~> 3.0.0'
+# foreman
+gem 'foreman', '~> 0.87.1'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
