@@ -11,6 +11,7 @@ Dependencies:
 
 From the root of the project directory - simply run:
 
+`rails db:create && rails db:migrate`
 `bundle install`
 `yarn install`
 
