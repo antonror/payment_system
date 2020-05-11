@@ -7,7 +7,7 @@ import {
 }                                  from "../redux/actions";
 import Merchants                   from "./merchants";
 import Transactions                from "./transactions";
-import PaymentModal                from "./payment-modal";
+import PaymentModal                from "./create-payment-modal";
 
 class PaymentSystem extends Component {
 
@@ -36,7 +36,9 @@ class PaymentSystem extends Component {
                 </div>
                 <div> <b>Amount: $</b> {currentUser.total_transaction_sum ? currentUser.total_transaction_sum : 0}</div>
                 <div className="pb-3"> <b>Description: </b> {currentUser.description}</div>
-                <PaymentModal />
+                {currentUser.status === 'active' &&
+                  <PaymentModal />
+                }
               </React.Fragment>
             }
           </div>

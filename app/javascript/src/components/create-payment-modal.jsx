@@ -121,10 +121,4 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 };
 
-// const mapStateToProps = state => {
-//   return {
-//     relatedTransactions      : state.transactions.relatedTransactions
-//   };
-// };
-
 export default connect(null, mapDispatchToProps)(PaymentModal);

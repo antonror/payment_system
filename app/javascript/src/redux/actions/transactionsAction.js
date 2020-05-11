@@ -34,3 +34,13 @@ export const createTransaction = (params) => {
       });
   };
 };
+
+export const updateTransactionStatus = (id, status) => {
+  return function(dispatch) {
+    return axios
+      .patch(`/api/v1/transactions/${id}`, {transaction:  {status: status}})
+      .then((resp) => {
+        dispatch(getTransactions());
+      });
+  };
+};

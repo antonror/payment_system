@@ -4,7 +4,7 @@ class CreateTransactions < ActiveRecord::Migration[6.0]
       t.decimal :amount, null: false, default: 0
       t.integer :status, null: false, default: 0
       t.string :customer_email, null: false, default: ""
-      t.integer :customer_phone, null: false, default: 0
+      t.string :customer_phone, null: false, default: ""
       t.references :user, foreign_key: true
 
       t.timestamps

@@ -4,6 +4,7 @@ import { bindActionCreators }      from "redux";
 import {
   getTransactions
 }                                  from "../redux/actions";
+import DetailTransactionModal      from "./detail-transaction-modal";
 
 class Transactions extends Component {
 
@@ -34,7 +35,7 @@ class Transactions extends Component {
                 <td className="text-capitalize">{transaction.status}</td>
                 <td>${transaction.amount ? transaction.amount : 0}</td>
                 <td>{transaction.created_at}</td>
-                <td>info</td>
+                <td><DetailTransactionModal transaction={transaction} /></td>
               </tr>
             ))}
           </tbody>

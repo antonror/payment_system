@@ -21,4 +21,9 @@ class User < ApplicationRecord
   has_many :reversed_transactions, dependent: :destroy
   has_many :authorized_transactions, dependent: :destroy
 
+  def update_total_transaction_sum
+    total_amount = charged_transactions.sum(:amount) - refunded_transactions.sum(:amount)
+    self.update(total_transaction_sum: total_amount)
+  end
+
 end
