@@ -42,13 +42,13 @@ Once that runs you should be able to run the following 3 commands in separate te
   - Polymorphic associations  **done**
   - Scopes **done**
   - Validations and custom validator object, if necessary **done**
-  - Factory pattern **pending**
-  - Demonstrate meta-programming by generating/defining similar predicate methods **pending**
-  - Encapsulate some logic in a module's class methods private section **pending**
+  - Factory pattern **done**
+  - Demonstrate meta-programming by generating/defining similar predicate methods **done**
+  - Encapsulate some logic in a module's class methods private section **done**
 9. For Rails controllers, try to:
   - Keep them 'thin' **done**
   - Encapsulate business logic in:
-    - service objects (1) **pending**
+    - service objects (1) **done**
     - use cases (2) ** chosen service object**
     - or similar operations (3) ** chosen service object**
     - Interactors (4) ** chosen service object**
